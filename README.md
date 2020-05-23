@@ -12,6 +12,7 @@ The goal of this project is the following:
 
 [image1]: ./images/sudoku-easy.png "sudoku easy"
 [image2]: ./images/easy-solution.png "sudoku easy solution"
+[image3]: ./images/harder-sudoku-reduced.png "sudoku hard reduction"
 
 ---
 
@@ -44,6 +45,12 @@ In constraint propagation, two strategies are used in my code. They are `Elimina
 for the easy sudoku problem shown above, the code provides the correct solution which can be seen here:
 
 ![alt text][image2]
+
+When using the reduction method on a harder sudoku, the following answer is given:
+
+![alt text][image3]
+
+The constraint propagation technique is not enough to solve it. Hence the need for the third strategy which is the `search` technique
 
 * Search
 
