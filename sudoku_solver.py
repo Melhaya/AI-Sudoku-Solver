@@ -81,14 +81,44 @@ def reduce_puzzle(values):
 			return False
 	return values
 
+def search(values):
+	'''Using depth-first search and propagation, create a search 
+	tree and solve the sudoku."
+	'''
+	# First, reduce the puzzle using the reduce_puzzle function
+	sudoku_grid = reduce_puzzle(values)
+	if sudoku_grid is False:
+		return False ## Failed earlier
+	
+	# If sudoku is solved, return the solution
+	if all(len(sudoku_grid[box]) == 1 for box in boxes): 
+		return sudoku_grid
 
-grid = '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..'
-#grid2 = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
+	# Choose one of the unfilled squares with the fewest possibilities
+	#for box in sudoku_grid.keys()
+	minvalue = 9
+	for box in boxes:
+		if len(sudoku_grid[box]) > 1:
+			if len(sudoku_grid[box]) < minvalue:
+				minvalue = len(sudoku_grid[box])
+				bestbox = box
+	
+	# Now use recursion to solve each one of the resulting sudokus,
+	#and if one returns a value (not False), return that answer!
+	for value in sudoku_grid[bestbox]:
+		new_sudoku = sudoku_grid.copy()
+		new_sudoku[bestbox] = value
+		attempt = search(new_sudoku)
+		if attempt:
+			return attempt
 
-sudoku_grid = grid_values(grid)
+easy_grid = '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..'
+hard_grid = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
+
+sudoku_grid = grid_values(hard_grid)
 display(sudoku_grid)
-print("##################################################################################")
-sudoku_grid = reduce_puzzle(sudoku_grid)
+print("############################################################################################")
+sudoku_grid = search(sudoku_grid)
 if sudoku_grid != False:	
 	display(sudoku_grid)
 else:
