@@ -13,6 +13,7 @@ The goal of this project is the following:
 [image1]: ./images/sudoku-easy.png "sudoku easy"
 [image2]: ./images/easy-solution.png "sudoku easy solution"
 [image3]: ./images/harder-sudoku-reduced.png "sudoku hard reduction"
+[image4]: ./images/hard-solution.png "sudoku hard solution"
 
 ---
 
@@ -53,5 +54,11 @@ When using the reduction method on a harder sudoku, the following answer is give
 The constraint propagation technique is not enough to solve it. Hence the need for the third strategy which is the `search` technique
 
 * Search
+
+After using a recursive search technique, the solution for the puzzle was successfully given as follows:
+
+
+![alt text][image4]
+
 
 
